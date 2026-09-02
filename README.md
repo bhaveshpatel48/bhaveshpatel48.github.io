@@ -1,28 +1,64 @@
 # bhaveshpatel48.github.io
 
-This repository will host my GitHub Pages portfolio site.
+Personal portfolio site for **Bhavesh Vaviya** — Senior Software Engineer (Python · GenAI · Backend).
 
-Live site
-- https://bhaveshpatel48.github.io (will go live after an `index.html` is added to `main`)
+**Live:** https://bhaveshpatel48.github.io
 
-What’s included (planned)
-- `index.html` — single-page portfolio
-- `styles.css` — site styles
-- `script.js` — small interactions
-- `assets/` — images (profile, project screenshots)
+## Files
 
-How to update
-1. Edit files locally or on GitHub and push to the `main` branch.
-2. GitHub Pages will serve this repo as a user site at https://bhaveshpatel48.github.io once an `index.html` is present.
+| File | Purpose |
+|------|---------|
+| `index.html` | Single-page portfolio + JSON-LD structured data |
+| `styles.css` | All styles (light theme, responsive, print stylesheet) |
+| `script.js` | Progressive enhancement only — scroll-spy nav highlight |
+| `assets/profile.svg` | **Placeholder** profile photo — replace this |
+| `assets/favicon.svg` | Browser tab icon |
+| `robots.txt` / `sitemap.xml` | Search engine directives |
+| `.nojekyll` | Tells GitHub Pages to serve files as-is |
 
-Customize
-- Replace the placeholder text and images in `index.html`.
-- Add project cards and links to your repos.
-- Add a `CNAME` file for a custom domain if needed.
+## Built for discoverability
 
-Next steps I can take for you
-- Add a minimal `index.html`, `styles.css`, `script.js`, and a placeholder image so the site is live immediately.
-- Or wait for you to provide copy and images and add them instead.
+The site is optimized so recruiters and sourcing tools surface it:
 
-Contact
-- Email: you@example.com
+- **Zero-JS content** — every resume fact is in the raw HTML. Scrapers that don't run
+  JavaScript still see all 900+ words and all 37 skill keywords.
+- **JSON-LD `Person` schema** — machine-readable job title, employer, location, education,
+  `sameAs` profile links, and a 40-entry `knowsAbout` skills list. This is what powers
+  Google's knowledge panels and what many ATS/sourcing crawlers parse first.
+- **Semantic HTML** — one `<h1>`, ordered heading hierarchy, `<time datetime>` on all dates.
+- **SEO meta** — title (57 chars) and description (153 chars) both sized to display in full
+  in search results, plus canonical URL and Open Graph tags for LinkedIn previews.
+- **Print stylesheet** — recruiters who "Save as PDF" get a clean, ink-friendly document.
+- **Accessible** — skip link, visible focus rings, alt text, `prefers-reduced-motion` support.
+
+## TODO before sharing widely
+
+1. **Replace the profile photo.** Drop a square image (600×600 or larger) at
+   `assets/profile.jpg`, then update the `<img class="avatar">` `src` in `index.html`
+   and the `og:image` / JSON-LD `image` URLs.
+2. **Verify social links.** These were inferred, not taken from the resume PDF — confirm
+   each resolves, and correct it in *both* the visible HTML and the JSON-LD `sameAs` array:
+   - `https://www.linkedin.com/in/bhaveshvaviya`
+   - `https://github.com/bhaveshpatel48`
+   - `https://leetcode.com/u/bhaveshvaviya48`
+3. **Consider a resume PDF.** Add `assets/resume.pdf` and link it from the hero for
+   one-click download.
+4. **Submit to Google.** Add the site in
+   [Search Console](https://search.google.com/search-console) and submit `sitemap.xml`
+   so it gets indexed in days rather than weeks.
+
+## Adding a project
+
+`index.html` has a commented-out `<article class="card">` template in the
+Selected Work section — copy it and fill in the details.
+
+## Local preview
+
+```bash
+python3 -m http.server 8000
+# open http://localhost:8000
+```
+
+## Deploy
+
+Push to `main`. GitHub Pages serves the repo automatically at the URL above.
